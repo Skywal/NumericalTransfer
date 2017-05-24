@@ -3,4 +3,7 @@
     <string name="buttonStart">Start</string>
     <string name="buttonInfo">Information</string>
     <string name="informationMessage">I have made this program to improve my skills.</string>
+    <string name="confirmButtonText">CONFIRM</string>
+    <string name="delButtonText">DEL</string>
+    <string name="answerButtonText">ANSWER</string>
 </resources>
