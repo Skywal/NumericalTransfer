@@ -2,4 +2,5 @@
     <string name="app_name">NumericalTransfer</string>
     <string name="buttonStart">Start</string>
     <string name="buttonInfo">Information</string>
+    <string name="informationMessage">I have made this program to improve my skills.</string>
 </resources>
