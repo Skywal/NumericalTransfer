@@ -1,5 +1,6 @@
 package derkach.andrei.numericaltransfer;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,19 @@ public class MainTrainingScreen extends AppCompatActivity {
         timerText = (TextView) findViewById(R.id.timerText);
         taskText = (TextView) findViewById(R.id.taskText);
         answerText = (TextView) findViewById(R.id.answerText);
+
+        new CountDownTimer(31000, 1000){
+
+            @Override
+            public void onTick(long milisecondsUntillFinish) {
+                timerText.setText(milisecondsUntillFinish / 1000 + "");
+            }
+
+            @Override
+            public void onFinish() {
+                timerText.setText("done");
+            }
+        }.start();
     }
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
