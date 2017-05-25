@@ -8,8 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainTrainingScreen extends AppCompatActivity {
-    /**таймер*/
+    /**теекст таймеру*/
     TextView timerText;
+    /**час на зворотній відлік у секудах*/
+    long timerCount;
     /**текст завдання що виводиться для вирішення*/
     TextView taskText;
     /**відповідь що вводиться гравцем*/
@@ -25,11 +27,15 @@ public class MainTrainingScreen extends AppCompatActivity {
         taskText = (TextView) findViewById(R.id.taskText);
         answerText = (TextView) findViewById(R.id.answerText);
 
-        new CountDownTimer(31000, 1000){
+        /**виставляжмо секундний таймер*/
+        timerCount = 30;
+
+        /**таймер зворотнього відліку, зміни демонструються через 1000 мілісекунд*/
+        new CountDownTimer(millisecondsFromSeconds(), 1000){
 
             @Override
-            public void onTick(long milisecondsUntillFinish) {
-                timerText.setText(milisecondsUntillFinish / 1000 + "");
+            public void onTick(long millisecondsUntilFinish) {
+                timerText.setText(millisecondsUntilFinish / 1000 + "");
             }
 
             @Override
@@ -56,8 +62,13 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ЦИФРА 0*/
     public void numPad0ButtonPush (View view){
         answerText.setText("0");
-    } /**обробник натиснення кнопки ЦИФРА 1*/
+    }
+    /**обробник натиснення кнопки ЦИФРА 1*/
     public void numPad1ButtonPush (View view){
         answerText.setText("1");
+    }
+    /**конвертація в мілісекунди*/
+    long millisecondsFromSeconds(){
+        return timerCount * 1000;
     }
 }
