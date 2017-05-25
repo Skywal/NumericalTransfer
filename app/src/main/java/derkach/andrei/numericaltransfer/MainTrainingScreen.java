@@ -1,6 +1,8 @@
 package derkach.andrei.numericaltransfer;
 
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +43,8 @@ public class MainTrainingScreen extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timerText.setText("done");
+                //викликаємо діалог по закінченню часу
+                timeOverDialog();
             }
         }.start();
     }
@@ -66,6 +70,32 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ЦИФРА 1*/
     public void numPad1ButtonPush (View view){
         answerText.setText("1");
+    }
+    /**діалог який з'являжться коли час вичерпано*/
+    public void timeOverDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //вибудовуємо контейнери для повідомлення
+        builder.setMessage(R.string.alertDialogMessage);
+        builder.setTitle(R.string.alertDialogTitle);
+
+        //додаємо кнопки
+        builder.setPositiveButton(R.string.alertDialogContinue, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //перехід до результатів тренування
+            }
+        });
+        builder.setNegativeButton(R.string.alertDialogResults, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // нове тренування
+            }
+        });
+
+        // створюжмо сам діалог
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
     /**конвертація в мілісекунди*/
     long millisecondsFromSeconds(){

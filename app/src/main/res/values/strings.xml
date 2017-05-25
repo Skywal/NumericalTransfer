@@ -6,4 +6,8 @@
     <string name="confirmButtonText">CONFIRM</string>
     <string name="delButtonText">DEL</string>
     <string name="answerButtonText">ANSWER</string>
+    <string name="alertDialogContinue">Continue</string>
+    <string name="alertDialogResults">Results</string>
+    <string name="alertDialogTitle">Time is UP!</string>
+    <string name="alertDialogMessage">some message will be in future</string>
 </resources>
