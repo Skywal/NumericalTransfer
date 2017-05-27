@@ -55,12 +55,7 @@ public class MainTrainingScreen extends AppCompatActivity {
         Toast.makeText(this,"Натиснуто ПІДТВЕРДИТИ", Toast.LENGTH_SHORT).show();
 
         /*конвертація при натиснені кнопки*/
-        fromDecimalToBinary.convertToBinary();
-        taskText.setText("");
-        taskText.setText(fromDecimalToBinary.getBinaryNumber());
-
-        answerString = "";
-        answerText.setText(answerString);
+        nextTask();
     }
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
@@ -135,23 +130,6 @@ public class MainTrainingScreen extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    /**конвертація в мілісекунди*/
-    private long millisecondsFromSeconds(){
-        return timerCount * 1000;
-    }
-    /**метод для старту чи рестарту тренування*/
-    public void startTraining(){
-        /**виставляжмо секундний таймер*/
-        timerCount = 90;
-
-        /** перший приклад при старті гри*/
-        fromDecimalToBinary.convertToBinary();
-        taskText.setText(fromDecimalToBinary.getBinaryNumber());
-
-        /**очищаємо рядок*/
-        answerString = "";
-        answerText.setText(answerString);
-    }
     /**для запуску таймеру*/
     private void timerStart(){
         /**таймер зворотнього відліку, зміни демонструються через 1000 мілісекунд*/
@@ -169,5 +147,33 @@ public class MainTrainingScreen extends AppCompatActivity {
                 timeOverDialog();
             }
         }.start();
+    }
+    /**конвертація в мілісекунди*/
+    private long millisecondsFromSeconds(){
+        return timerCount * 1000;
+    }
+    /**метод для старту чи рестарту тренування*/
+    private void startTraining(){
+        /**виставляжмо секундний таймер*/
+        timerCount = 90;
+
+        /** перший приклад при старті гри*/
+        fromDecimalToBinary.convertToBinary();
+        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+
+        /**очищаємо рядок*/
+        answerString = "";
+        answerText.setText(answerString);
+    }
+    /**для просування по завдяннях*/
+    private void nextTask(){
+        fromDecimalToBinary.convertToBinary();
+
+        /**очистка рядка*/
+        taskText.setText("");
+        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+
+        answerString = "";
+        answerText.setText(answerString);
     }
 }
