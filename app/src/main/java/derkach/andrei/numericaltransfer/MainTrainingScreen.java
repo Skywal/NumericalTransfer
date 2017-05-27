@@ -36,25 +36,13 @@ public class MainTrainingScreen extends AppCompatActivity {
         answerText = (TextView) findViewById(R.id.answerText);
 
         /**виставляжмо секундний таймер*/
-        timerCount = 90;
+       // timerCount = 90;
 
         fromDecimalToBinary = new FromDecimalToBinary();
+        /**Старт тренування*/
+        startTraining();
 
-        /**таймер зворотнього відліку, зміни демонструються через 1000 мілісекунд*/
-        new CountDownTimer(millisecondsFromSeconds(), 1000){
-
-            @Override
-            public void onTick(long millisecondsUntilFinish) {
-                timerText.setText(millisecondsUntilFinish / 1000 + "");
-            }
-
-            @Override
-            public void onFinish() {
-                timerText.setText("done");
-                //викликаємо діалог по закінченню часу
-                timeOverDialog();
-            }
-        }.start();
+        timerStart();
     }
     /**обробник апаратної кнопки назад*/
     @Override
@@ -68,7 +56,9 @@ public class MainTrainingScreen extends AppCompatActivity {
 
         /*конвертація при натиснені кнопки*/
         fromDecimalToBinary.convertToBinary();
+        taskText.setText("");
         taskText.setText(fromDecimalToBinary.getBinaryNumber());
+
         answerString = "";
         answerText.setText(answerString);
     }
@@ -146,7 +136,38 @@ public class MainTrainingScreen extends AppCompatActivity {
         dialog.show();
     }
     /**конвертація в мілісекунди*/
-    long millisecondsFromSeconds(){
+    private long millisecondsFromSeconds(){
         return timerCount * 1000;
+    }
+    /**метод для старту чи рестарту тренування*/
+    public void startTraining(){
+        /**виставляжмо секундний таймер*/
+        timerCount = 90;
+
+        /** перший приклад при старті гри*/
+        fromDecimalToBinary.convertToBinary();
+        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+
+        /**очищаємо рядок*/
+        answerString = "";
+        answerText.setText(answerString);
+    }
+    /**для запуску таймеру*/
+    private void timerStart(){
+        /**таймер зворотнього відліку, зміни демонструються через 1000 мілісекунд*/
+        new CountDownTimer(millisecondsFromSeconds(), 1000){
+
+            @Override
+            public void onTick(long millisecondsUntilFinish) {
+                timerText.setText(millisecondsUntilFinish / 1000 + "");
+            }
+
+            @Override
+            public void onFinish() {
+                timerText.setText("done");
+                //викликаємо діалог по закінченню часу
+                timeOverDialog();
+            }
+        }.start();
     }
 }
