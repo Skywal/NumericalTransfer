@@ -51,7 +51,7 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник апаратної кнопки назад*/
     @Override
     public void onBackPressed(){
-        Toast.makeText(this,"Натиснуто НАЗАД", Toast.LENGTH_SHORT).show();
+        backButtonDialog();
     }
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
@@ -95,15 +95,39 @@ public class MainTrainingScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // нове тренування
-
             }
         });
 
-        // створюжмо сам діалог
+        // створюємо сам діалог
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    /**діалог який зявляється коли натиснуто кнопку назад*/
+    public void backButtonDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        //вибудовуємо контейнери для повідомлення
+        builder.setMessage(R.string.backButtonDialogMessage);
+        builder.setTitle(R.string.backButtonDialogTitle);
+
+        //додаємо кнопки
+        builder.setPositiveButton(R.string.backButtonDialogPositive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //перехід до головного екрану
+            }
+        });
+        builder.setNegativeButton(R.string.backButtonDialogNegative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // нічго не змінюється, тренування продовжуються
+            }
+        });
+
+        // створюємо сам діалог
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
     /**конвертація в мілісекунди*/
     long millisecondsFromSeconds(){
         return timerCount * 1000;

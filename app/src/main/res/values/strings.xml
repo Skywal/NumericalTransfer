@@ -10,4 +10,8 @@
     <string name="alertDialogResults">Results</string>
     <string name="alertDialogTitle">Time is UP!</string>
     <string name="alertDialogMessage">some message will be in future</string>
+    <string name="backButtonDialogTitle">Quit</string>
+    <string name="backButtonDialogMessage">Are you sure?</string>
+    <string name="backButtonDialogPositive">YES</string>
+    <string name="backButtonDialogNegative">NO</string>
 </resources>
