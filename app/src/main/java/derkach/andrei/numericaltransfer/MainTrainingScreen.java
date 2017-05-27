@@ -48,6 +48,11 @@ public class MainTrainingScreen extends AppCompatActivity {
             }
         }.start();
     }
+    /**обробник апаратної кнопки назад*/
+    @Override
+    public void onBackPressed(){
+        Toast.makeText(this,"Натиснуто НАЗАД", Toast.LENGTH_SHORT).show();
+    }
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
         /**для тесту*/
@@ -90,6 +95,7 @@ public class MainTrainingScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // нове тренування
+
             }
         });
 
@@ -97,6 +103,7 @@ public class MainTrainingScreen extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     /**конвертація в мілісекунди*/
     long millisecondsFromSeconds(){
         return timerCount * 1000;
