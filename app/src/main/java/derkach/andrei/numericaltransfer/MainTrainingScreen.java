@@ -1,6 +1,7 @@
 package derkach.andrei.numericaltransfer;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -85,13 +86,13 @@ public class MainTrainingScreen extends AppCompatActivity {
         builder.setTitle(R.string.alertDialogTitle);
 
         //додаємо кнопки
-        builder.setPositiveButton(R.string.alertDialogContinue, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.alertDialogPositive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //перехід до результатів тренування
             }
         });
-        builder.setNegativeButton(R.string.alertDialogResults, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.alertDialogNegative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // нове тренування
@@ -115,6 +116,7 @@ public class MainTrainingScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //перехід до головного екрану
+                MainTrainingScreen.super.onBackPressed();
             }
         });
         builder.setNegativeButton(R.string.backButtonDialogNegative, new DialogInterface.OnClickListener() {
