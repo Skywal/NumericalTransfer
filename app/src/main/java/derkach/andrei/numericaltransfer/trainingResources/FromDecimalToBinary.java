@@ -12,13 +12,17 @@ public class FromDecimalToBinary {
     private String binaryNumber;
 
     public FromDecimalToBinary(){
-        decimalNumber = 37;
+        decimalNumber = 66;
         binaryNumber = "";
     }
 
-    public void convertToBinary(int dec){
-        int temp = dec;
+    /**перевід числа із десяткової системи числення у двійкову*/
+    public void convertToBinary(){
+
+        int temp = decimalNumber;
         int temp2 = temp;
+
+        /*переводимо число*/
         while (temp2 != 0){
             temp %= 2;
             if(temp != 0)
@@ -28,12 +32,21 @@ public class FromDecimalToBinary {
             temp2 /=2;
             temp = temp2;
         }
+
+        /*перевертаємо рядок*/
         reverseString();
     }
+
+    /**переворіт рядка для того щоб відобразити правильне число*/
     private void reverseString(){
+        /*є вбудований метод перевороту рядка*/
         StringBuilder tempString = new StringBuilder();
+
         tempString.append(binaryNumber);
         tempString.reverse();
+
+        binaryNumber = "";
+
         for (int i=0; i < tempString.length(); i++)
             binaryNumber += tempString.charAt(i);
     }

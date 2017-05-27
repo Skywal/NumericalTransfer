@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import derkach.andrei.numericaltransfer.trainingResources.FromDecimalToBinary;
+
 public class MainTrainingScreen extends AppCompatActivity {
     /**теекст таймеру*/
     TextView timerText;
@@ -19,7 +21,10 @@ public class MainTrainingScreen extends AppCompatActivity {
     TextView taskText;
     /**відповідь що вводиться гравцем*/
     TextView answerText;
+    String answerString;
 
+    /**для переводу чисел в діцйкову систему числення*/
+    FromDecimalToBinary fromDecimalToBinary;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,9 @@ public class MainTrainingScreen extends AppCompatActivity {
         answerText = (TextView) findViewById(R.id.answerText);
 
         /**виставляжмо секундний таймер*/
-        timerCount = 30;
+        timerCount = 90;
+
+        fromDecimalToBinary = new FromDecimalToBinary();
 
         /**таймер зворотнього відліку, зміни демонструються через 1000 мілісекунд*/
         new CountDownTimer(millisecondsFromSeconds(), 1000){
@@ -58,8 +65,14 @@ public class MainTrainingScreen extends AppCompatActivity {
     public void confirmButtonPush (View view){
         /**для тесту*/
         Toast.makeText(this,"Натиснуто ПІДТВЕРДИТИ", Toast.LENGTH_SHORT).show();
+
+        /*конвертація при натиснені кнопки*/
+        fromDecimalToBinary.convertToBinary();
+        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+        answerString = "";
+        answerText.setText(answerString);
     }
-    /**обробник натиснення кнопки ВІДПОВІДЬ*/
+    /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
         /**для тесту*/
         Toast.makeText(this,"Натиснуто ВІДПОВІДЬ", Toast.LENGTH_SHORT).show();
@@ -71,11 +84,13 @@ public class MainTrainingScreen extends AppCompatActivity {
     }
     /**обробник натиснення кнопки ЦИФРА 0*/
     public void numPad0ButtonPush (View view){
-        answerText.setText("0");
+        answerString += "0";
+        answerText.setText(answerString);
     }
     /**обробник натиснення кнопки ЦИФРА 1*/
     public void numPad1ButtonPush (View view){
-        answerText.setText("1");
+        answerString +="1";
+        answerText.setText(answerString);
     }
     /**діалог який з'являжться коли час вичерпано*/
     public void timeOverDialog(){
