@@ -18,19 +18,20 @@ public class FromDecimalToBinary {
 
     /**перевід числа із десяткової системи числення у двійкову*/
     public void convertToBinary(){
-
-        int temp = decimalNumber;
-        int temp2 = temp;
+        /*дробова частина числа*/
+        int fractionalPartOfNum = decimalNumber;
+        /*ціла частина числа*/
+        int wholeOfNum = fractionalPartOfNum;
 
         /*переводимо число*/
-        while (temp2 != 0){
-            temp %= 2;
-            if(temp != 0)
+        while (wholeOfNum != 0){
+            fractionalPartOfNum %= 2;
+            if(fractionalPartOfNum != 0)
                 binaryNumber += "1";
             else
                 binaryNumber += "0";
-            temp2 /=2;
-            temp = temp2;
+            wholeOfNum /=2;
+            fractionalPartOfNum = wholeOfNum;
         }
 
         /*перевертаємо рядок*/
