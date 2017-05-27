@@ -18,9 +18,24 @@ public class FromDecimalToBinary {
 
     public void convertToBinary(int dec){
         int temp = dec;
-        while (temp != 0){
-            temp /= 2;
+        int temp2 = temp;
+        while (temp2 != 0){
+            temp %= 2;
+            if(temp != 0)
+                binaryNumber += "1";
+            else
+                binaryNumber += "0";
+            temp2 /=2;
+            temp = temp2;
         }
+        reverseString();
+    }
+    private void reverseString(){
+        StringBuilder tempString = new StringBuilder();
+        tempString.append(binaryNumber);
+        tempString.reverse();
+        for (int i=0; i < tempString.length(); i++)
+            binaryNumber += tempString.charAt(i);
     }
 
     public void setDecimalNumber(int decimalNumber) {
