@@ -74,8 +74,10 @@ public class MainTrainingScreen extends AppCompatActivity {
     }
     /**обробник натиснення кнопки ВИДАЛИТИ*/
     public void delButtonPush (View view){
-        /**для тесту*/
-        Toast.makeText(this,"Натиснуто ВИДАЛИТИ", Toast.LENGTH_SHORT).show();
+        if(answerString.length() != 1)
+            answerString = answerString.substring(0,answerString.length()-1);
+        else answerString ="";
+        answerText.setText(answerString);
     }
     /**обробник натиснення кнопки ЦИФРА 0*/
     public void numPad0ButtonPush (View view){
