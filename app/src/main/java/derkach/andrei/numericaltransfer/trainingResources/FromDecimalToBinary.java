@@ -10,8 +10,11 @@ public class FromDecimalToBinary {
     private int decimalNumber;
     /**двійкове число*/
     private String binaryNumber;
+    /**верхня межа рандомного числа*/
+    int bound;
 
     public FromDecimalToBinary(int bound){
+        this.bound = bound;
         decimalNumber = Shared.random.nextInt(bound);
         binaryNumber = "";
     }
@@ -53,10 +56,14 @@ public class FromDecimalToBinary {
         for (int i=0; i < tempString.length(); i++)
             binaryNumber += tempString.charAt(i);
     }
-
-    public void setDecimalNumber(int decimalNumber) {
-        this.decimalNumber = decimalNumber;
+    /**просування по числах*/
+    public void nextRandomNumber(){
+        decimalNumber = Shared.random.nextInt(bound);
     }
+
+    /*public void setDecimalNumber(int decimalNumber) {
+        this.decimalNumber = decimalNumber;
+    }*/
 
     public int getDecimalNumber() {
         return decimalNumber;

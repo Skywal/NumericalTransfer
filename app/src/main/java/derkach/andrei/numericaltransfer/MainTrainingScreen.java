@@ -17,21 +17,20 @@ import derkach.andrei.numericaltransfer.trainingResources.Shared;
 public class MainTrainingScreen extends AppCompatActivity {
     /**теекст таймеру*/
     TextView timerText;
-    /**час на зворотній відлік у секудах*/
-    long timerCount;
     /**текст завдання що виводиться для вирішення*/
     TextView taskText;
     /**відповідь що виводиться на екран*/
     TextView answerText;
     /**відповідь що вводиться гравцем*/
     String answerString;
+    /**час на зворотній відлік у секудах*/
+    long timerCount;
     /**верхня межа рандому для тренування*/
     int bound;
-    /**сповіщення для демонстрації правильної відповіді*/
-    //Toast toast;
 
     /**для переводу чисел в діцйкову систему числення*/
     FromDecimalToBinary fromDecimalToBinary;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,6 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
         /*демонстрація правильної відповіді*/
-        //Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
         Toast toast = Toast.makeText(this, fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT);
         /*репозиція сповіщення*/
         toast.setGravity(Gravity.TOP, 0, 0);
@@ -175,6 +173,7 @@ public class MainTrainingScreen extends AppCompatActivity {
     }
     /**для просування по завдяннях*/
     private void nextTask(){
+        fromDecimalToBinary.nextRandomNumber();
         fromDecimalToBinary.convertToBinary();
 
         /**очистка рядка*/
