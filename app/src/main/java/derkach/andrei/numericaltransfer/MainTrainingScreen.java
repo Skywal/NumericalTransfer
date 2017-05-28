@@ -61,8 +61,8 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
         /*демонстрація правильної відповіді*/
-        //Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
-        answerText.setText(fromDecimalToBinary.getBinaryNumber());
+        Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
+        //answerText.setText(fromDecimalToBinary.getBinaryNumber());
     }
     /**обробник натиснення кнопки ВИДАЛИТИ*/
     public void delButtonPush (View view){

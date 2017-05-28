@@ -22,6 +22,8 @@ public class FromDecimalToBinary {
         int fractionalPartOfNum = decimalNumber;
         /*ціла частина числа*/
         int wholeOfNum = fractionalPartOfNum;
+        /*витираємо рядок*/
+        binaryNumber = "";
 
         /*переводимо число*/
         while (wholeOfNum != 0){
@@ -46,7 +48,7 @@ public class FromDecimalToBinary {
         tempString.append(binaryNumber);
         tempString.reverse();
 
-        binaryNumber = new String("");
+        binaryNumber = "";
 
         for (int i=0; i < tempString.length(); i++)
             binaryNumber += tempString.charAt(i);
