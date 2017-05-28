@@ -101,13 +101,20 @@ public class MainTrainingScreen extends AppCompatActivity {
         builder.setPositiveButton(R.string.alertDialogPositive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                //нове тренування
+            }
+        });
+        builder.setNeutralButton(R.string.alertDialogNeutral,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 //перехід до результатів тренування
             }
         });
         builder.setNegativeButton(R.string.alertDialogNegative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // нове тренування
+                // вихід
+                System.exit(0);
             }
         });
 
@@ -167,7 +174,7 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**метод для старту чи рестарту тренування*/
     private void startTraining(){
         /**виставляжмо секундний таймер*/
-        timerCount = 90;
+        timerCount = 9;
 
         /** перший приклад при старті гри*/
         fromDecimalToBinary.convertToBinary();

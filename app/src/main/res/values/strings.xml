@@ -7,7 +7,7 @@
     <string name="delButtonText">DEL</string>
     <string name="answerButtonText">ANSWER</string>
     <string name="alertDialogPositive">Continue</string>
-    <string name="alertDialogNegative">Results</string>
+    <string name="alertDialogNegative">Quit</string>
     <string name="alertDialogTitle">Time is UP!</string>
     <string name="alertDialogMessage">some message will be in future</string>
     <string name="backButtonDialogTitle">Quit</string>
@@ -16,4 +16,5 @@
     <string name="backButtonDialogNegative">NO</string>
     <string name="decimalText">Decimal:</string>
     <string name="binaryText">Binary:</string>
+    <string name="alertDialogNeutral">Results</string>
 </resources>
