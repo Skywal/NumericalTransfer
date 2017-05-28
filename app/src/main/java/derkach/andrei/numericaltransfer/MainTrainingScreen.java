@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class MainTrainingScreen extends AppCompatActivity {
     String answerString;
     /**верхня межа рандому для тренування*/
     int bound;
+    /**сповіщення для демонстрації правильної відповіді*/
+    //Toast toast;
 
     /**для переводу чисел в діцйкову систему числення*/
     FromDecimalToBinary fromDecimalToBinary;
@@ -61,8 +64,11 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
         /*демонстрація правильної відповіді*/
-        Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
-        //answerText.setText(fromDecimalToBinary.getBinaryNumber());
+        //Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(this, fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT);
+        /*репозиція сповіщення*/
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show();
     }
     /**обробник натиснення кнопки ВИДАЛИТИ*/
     public void delButtonPush (View view){
