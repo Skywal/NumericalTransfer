@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import derkach.andrei.numericaltransfer.trainingResources.FromDecimalToBinary;
+import derkach.andrei.numericaltransfer.trainingResources.Shared;
 
 public class MainTrainingScreen extends AppCompatActivity {
     /**теекст таймеру*/
@@ -60,7 +61,7 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
         /**для тесту*/
-        Toast.makeText(this,"Натиснуто ВІДПОВІДЬ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
     }
     /**обробник натиснення кнопки ВИДАЛИТИ*/
     public void delButtonPush (View view){
@@ -170,7 +171,7 @@ public class MainTrainingScreen extends AppCompatActivity {
         fromDecimalToBinary.convertToBinary();
 
         /**очистка рядка*/
-        taskText.setText("");
+        taskText.setText(" ");
         taskText.setText(fromDecimalToBinary.getBinaryNumber());
 
         answerString = "";
