@@ -9,5 +9,5 @@ import java.util.Random;
 
 public class Shared {
     /*рандомні числа для тренування*/
-    static public Random random;
+    static public Random random = new Random();
 }

@@ -11,8 +11,8 @@ public class FromDecimalToBinary {
     /**двійкове число*/
     private String binaryNumber;
 
-    public FromDecimalToBinary(){
-        decimalNumber = 66;
+    public FromDecimalToBinary(int bound){
+        decimalNumber = Shared.random.nextInt(bound);
         binaryNumber = "";
     }
 
@@ -46,7 +46,7 @@ public class FromDecimalToBinary {
         tempString.append(binaryNumber);
         tempString.reverse();
 
-        binaryNumber = "";
+        binaryNumber = new String("");
 
         for (int i=0; i < tempString.length(); i++)
             binaryNumber += tempString.charAt(i);

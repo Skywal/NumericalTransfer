@@ -20,9 +20,12 @@ public class MainTrainingScreen extends AppCompatActivity {
     long timerCount;
     /**текст завдання що виводиться для вирішення*/
     TextView taskText;
-    /**відповідь що вводиться гравцем*/
+    /**відповідь що виводиться на екран*/
     TextView answerText;
+    /**відповідь що вводиться гравцем*/
     String answerString;
+    /**верхня межа рандому для тренування*/
+    int bound;
 
     /**для переводу чисел в діцйкову систему числення*/
     FromDecimalToBinary fromDecimalToBinary;
@@ -36,10 +39,10 @@ public class MainTrainingScreen extends AppCompatActivity {
         taskText = (TextView) findViewById(R.id.taskText);
         answerText = (TextView) findViewById(R.id.answerText);
 
-        /**виставляжмо секундний таймер*/
-       // timerCount = 90;
+        /**виставляємо верхню межу рандому для числа*/
+        bound = 1000;
 
-        fromDecimalToBinary = new FromDecimalToBinary();
+        fromDecimalToBinary = new FromDecimalToBinary(bound);
         /**Старт тренування*/
         startTraining();
 
@@ -52,16 +55,14 @@ public class MainTrainingScreen extends AppCompatActivity {
     }
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
-        /**для тесту*/
-        //Toast.makeText(this,"Натиснуто ПІДТВЕРДИТИ", Toast.LENGTH_SHORT).show();
-
         /*конвертація при натиснені кнопки*/
         nextTask();
     }
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){
-        /**для тесту*/
-        Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
+        /*демонстрація правильної відповіді*/
+        //Toast.makeText(this,fromDecimalToBinary.getBinaryNumber(), Toast.LENGTH_SHORT).show();
+        answerText.setText(fromDecimalToBinary.getBinaryNumber());
     }
     /**обробник натиснення кнопки ВИДАЛИТИ*/
     public void delButtonPush (View view){
@@ -171,7 +172,7 @@ public class MainTrainingScreen extends AppCompatActivity {
         fromDecimalToBinary.convertToBinary();
 
         /**очистка рядка*/
-        taskText.setText(" ");
+        taskText.setText("");
         taskText.setText(fromDecimalToBinary.getDecimalNumber() + "");
 
         answerString = "";
