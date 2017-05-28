@@ -53,7 +53,7 @@ public class MainTrainingScreen extends AppCompatActivity {
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
         /**для тесту*/
-        Toast.makeText(this,"Натиснуто ПІДТВЕРДИТИ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Натиснуто ПІДТВЕРДИТИ", Toast.LENGTH_SHORT).show();
 
         /*конвертація при натиснені кнопки*/
         nextTask();
@@ -160,7 +160,7 @@ public class MainTrainingScreen extends AppCompatActivity {
 
         /** перший приклад при старті гри*/
         fromDecimalToBinary.convertToBinary();
-        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+        taskText.setText(fromDecimalToBinary.getDecimalNumber() + "");
 
         /**очищаємо рядок*/
         answerString = "";
@@ -172,7 +172,7 @@ public class MainTrainingScreen extends AppCompatActivity {
 
         /**очистка рядка*/
         taskText.setText(" ");
-        taskText.setText(fromDecimalToBinary.getBinaryNumber());
+        taskText.setText(fromDecimalToBinary.getDecimalNumber() + "");
 
         answerString = "";
         answerText.setText(answerString);
