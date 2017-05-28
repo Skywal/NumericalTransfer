@@ -57,8 +57,12 @@ public class MainTrainingScreen extends AppCompatActivity {
     }
     /**обробник натиснення кнопки ПІДТВЕРДЖЕННЯ*/
     public void confirmButtonPush (View view){
+        if(fromDecimalToBinary.isRightAnswer(answerString)) {
         /*конвертація при натиснені кнопки*/
-        nextTask();
+            nextTask();
+        } else
+            Toast.makeText(this,"Не вірно", Toast.LENGTH_SHORT).show();
+
     }
     /**обробник натиснення кнопки ВІДПОВІДЬ (демонстрація правильної відповіді)*/
     public void answerButtonPush (View view){

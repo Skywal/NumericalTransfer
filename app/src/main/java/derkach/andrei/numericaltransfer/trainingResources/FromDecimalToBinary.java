@@ -60,10 +60,13 @@ public class FromDecimalToBinary {
     public void nextRandomNumber(){
         decimalNumber = Shared.random.nextInt(bound);
     }
-
-    /*public void setDecimalNumber(int decimalNumber) {
-        this.decimalNumber = decimalNumber;
-    }*/
+    /**перевірка на правильність відповіді*/
+    public boolean isRightAnswer(String answer) {
+        if (binaryNumber.equals(answer))
+            return true;
+        else
+        return false;
+    }
 
     public int getDecimalNumber() {
         return decimalNumber;
