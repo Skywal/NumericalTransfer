@@ -11,6 +11,7 @@ import derkach.andrei.numericaltransfer.data.ProgressDbHelper;
 
 public class InformationScreen extends AppCompatActivity {
 
+    /**робота із базою даних*/
     private ProgressDbHelper mDbHelper;
 
     @Override
@@ -19,6 +20,7 @@ public class InformationScreen extends AppCompatActivity {
         setContentView(R.layout.activity_information_screen);
 
         mDbHelper = new ProgressDbHelper(this);
+        displayDatabaseInfo();
     }
 
     /**демонстрація результатів тренування*/
