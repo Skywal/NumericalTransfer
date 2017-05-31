@@ -3,6 +3,7 @@ package derkach.andrei.numericaltransfer.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by Bloom on 31.05.2017.
@@ -16,6 +17,8 @@ public class ProgressDbHelper extends SQLiteOpenHelper {
     /**версія бази даних
      * якщо змінюється схема бази то збільшувати на один*/
     public static final int DATABASE_VERSION = 1;
+    /**для запису в лог*/
+    public static final String LOG_TAG = ProgressDbHelper.class.getName();
 
     /**Конструктор*/
     public ProgressDbHelper(Context context) {
@@ -38,7 +41,13 @@ public class ProgressDbHelper extends SQLiteOpenHelper {
 
     /**Викликається при обнові схеми бази данних*/
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        /*запишемо в журнал*/
+        Log.w("SQLite","Update from version " + oldVersion + " on version " + newVersion);
 
+        /*видаляємо стару базу даних*/
+        sqLiteDatabase.execSQL("drop table if it " + ProgressContract.DecToBinProgress.TABLE_NAME);
+        /*створюємо нову базу*/
+        onCreate(sqLiteDatabase);
     }
 }
