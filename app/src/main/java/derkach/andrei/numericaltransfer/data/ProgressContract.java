@@ -18,7 +18,7 @@ public final class ProgressContract {
 
         /*назва стовпців таблиці*/
         public final static String _ID = BaseColumns._ID; // головне ключове поле
-        public final static String COLUMN_DECIMAL_NUM = "decimal_num"; // завдання
+        public final static String COLUMN_TASK_DEC = "task_dec"; // завдання
         public final static String COLUMN_ANSWER_BIN = "answer_bin"; // відповідь
     }
 }
