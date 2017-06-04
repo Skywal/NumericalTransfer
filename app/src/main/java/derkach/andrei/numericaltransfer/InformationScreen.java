@@ -1,5 +1,6 @@
 package derkach.andrei.numericaltransfer;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,12 @@ public class InformationScreen extends AppCompatActivity {
         setContentView(R.layout.activity_information_screen);
 
         mDbHelper = new ProgressDbHelper(this);
+
+        /**тест*/
+        for(int i = 0; i < 10; i++)
+            addLineToDb();
+        /*****/
+        /**показати записи  у базі данних*/
         displayDatabaseInfo();
     }
 
@@ -45,7 +52,8 @@ public class InformationScreen extends AppCompatActivity {
                 null                                            //  порядок сортування
         );
 
-        TextView resultsDbText = (TextView) findViewById(R.id.resultsDbText);
+        TextView resultsDbText = (TextView) findViewById(R.id.resultsDbText); //відображення таблиці
+
         try {
             resultsDbText.setText("Table has " + cursor.getCount() + " results.\n\n");
             resultsDbText.append(ProgressContract.DecToBinProgress._ID + ". "
@@ -77,4 +85,15 @@ public class InformationScreen extends AppCompatActivity {
         }
     }
 
+    /**додає запис у базу даних*/
+    private void addLineToDb(){
+        /*база даних у режимі запису*/
+        SQLiteDatabase database = mDbHelper.getWritableDatabase();
+        /*для додавання нових рядків у таблицю*/
+        ContentValues values = new ContentValues();
+        values.put(ProgressContract.DecToBinProgress.COLUMN_TASK_DEC, 656);
+        values.put(ProgressContract.DecToBinProgress.COLUMN_ANSWER_BIN, "1010010000");
+
+        long newRowId = database.insert(ProgressContract.DecToBinProgress.TABLE_NAME, null, values);
+    }
 }
