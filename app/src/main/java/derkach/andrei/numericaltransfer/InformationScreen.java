@@ -23,8 +23,7 @@ public class InformationScreen extends AppCompatActivity {
         mDbHelper = new ProgressDbHelper(this);
 
         /**тест*/
-        for(int i = 0; i < 10; i++)
-            addLineToDb();
+        addLineToDb();
         /*****/
         /**показати записи  у базі данних*/
         displayDatabaseInfo();

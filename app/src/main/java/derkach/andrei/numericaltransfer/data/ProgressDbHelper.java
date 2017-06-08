@@ -50,4 +50,14 @@ public class ProgressDbHelper extends SQLiteOpenHelper {
         /*створюємо нову базу*/
         onCreate(sqLiteDatabase);
     }
+
+    /**викликати при знищенні бази даних*/
+    public void onDrop(SQLiteDatabase sqLiteDatabase){
+        //рядок для знищення бази данних
+        String SQL_DROP_PROGRESS_TABLE = "drop table if exists "
+                + ProgressContract.DecToBinProgress.TABLE_NAME;
+
+        //знищення таблиці/
+        sqLiteDatabase.execSQL(SQL_DROP_PROGRESS_TABLE);
+    }
 }
