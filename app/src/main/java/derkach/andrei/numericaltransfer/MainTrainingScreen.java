@@ -46,7 +46,7 @@ public class MainTrainingScreen extends AppCompatActivity {
 
         fromDecimalToBinary = new FromDecimalToBinary(bound);
         /**Старт тренування*/
-        startTraining();
+        startTraining(30);
 
         timerStart();
     }
@@ -172,9 +172,9 @@ public class MainTrainingScreen extends AppCompatActivity {
         return timerCount * 1000;
     }
     /**метод для старту чи рестарту тренування*/
-    private void startTraining(){
+    private void startTraining(int timer){
         /**виставляжмо секундний таймер*/
-        timerCount = 9;
+        timerCount = timer;
 
         /** перший приклад при старті гри*/
         fromDecimalToBinary.convertToBinary();

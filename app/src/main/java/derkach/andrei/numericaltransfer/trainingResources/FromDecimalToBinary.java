@@ -1,5 +1,8 @@
 package derkach.andrei.numericaltransfer.trainingResources;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * Created by Bloom on 27.05.2017.
  * клас для переводу чисел із десяткової системи числення у двійкову
@@ -13,6 +16,12 @@ public class FromDecimalToBinary {
     /**верхня межа рандомного числа*/
     int bound;
 
+    /**для швидкого послідовного доступу*/
+    /**історія завдань */
+    LinkedList<Integer> taskList = new LinkedList<>();  // convertToBinary  isRightAnswer
+    /**історія відповідей*/
+    LinkedList<String> answerList = new LinkedList<>(); //isRightAnswer
+
     public FromDecimalToBinary(int bound){
         this.bound = bound;
         decimalNumber = Shared.random.nextInt(bound);
@@ -21,6 +30,9 @@ public class FromDecimalToBinary {
 
     /**перевід числа із десяткової системи числення у двійкову*/
     public void convertToBinary(){
+        /*додаємо історію завдань*/
+        taskList.add(decimalNumber);
+
         /*дробова частина числа*/
         int fractionalPartOfNum = decimalNumber;
         /*ціла частина числа*/
@@ -62,18 +74,24 @@ public class FromDecimalToBinary {
     }
     /**перевірка на правильність відповіді*/
     public boolean isRightAnswer(String answer) {
-        if (binaryNumber.equals(answer))
+        if (binaryNumber.equals(answer)) {
+
+            /*додаємо історію відповідей*/
+            answerList.add(answer);
+
             return true;
-        else
-        return false;
+        }
+        else {
+            /*якщо відповідь не правилиьна то записуємо і завдання дублюється */
+            taskList.add(decimalNumber);
+            answerList.add(answer);
+
+            return false;
+        }
     }
 
     public int getDecimalNumber() {
         return decimalNumber;
-    }
-
-    public void setBinaryNumber(String binaryNumber) {
-        this.binaryNumber = binaryNumber;
     }
 
     public String getBinaryNumber() {
