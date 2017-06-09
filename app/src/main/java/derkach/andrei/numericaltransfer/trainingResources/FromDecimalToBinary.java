@@ -1,6 +1,5 @@
 package derkach.andrei.numericaltransfer.trainingResources;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -18,7 +17,7 @@ public class FromDecimalToBinary {
 
     /**для швидкого послідовного доступу*/
     /**історія завдань */
-    LinkedList<Integer> taskList = new LinkedList<>();  // convertToBinary  isRightAnswer
+    LinkedList<Integer> taskList = new LinkedList<>();  //isRightAnswer
     /**історія відповідей*/
     LinkedList<String> answerList = new LinkedList<>(); //isRightAnswer
 
@@ -30,8 +29,8 @@ public class FromDecimalToBinary {
 
     /**перевід числа із десяткової системи числення у двійкову*/
     public void convertToBinary(){
-        /*додаємо історію завдань*/
-        taskList.add(decimalNumber);
+        /*додаємо історію завдань*///потім якщо дійде до того чи підглянули, чи ні
+        //taskList.add(decimalNumber);
 
         /*дробова частина числа*/
         int fractionalPartOfNum = decimalNumber;
@@ -77,17 +76,21 @@ public class FromDecimalToBinary {
         if (binaryNumber.equals(answer)) {
 
             /*додаємо історію відповідей*/
-            answerList.add(answer);
+            addInHistory(decimalNumber, answer);
 
             return true;
         }
         else {
             /*якщо відповідь не правилиьна то записуємо і завдання дублюється */
-            taskList.add(decimalNumber);
-            answerList.add(answer);
+            addInHistory(decimalNumber, answer);
 
             return false;
         }
+    }
+    /**запис у списки для історії*/
+    public void addInHistory(int task, String answer){
+        taskList.add(task);
+        answerList.add(answer);
     }
 
     public int getDecimalNumber() {
